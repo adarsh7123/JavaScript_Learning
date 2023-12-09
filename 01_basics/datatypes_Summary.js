@@ -44,3 +44,24 @@ String	"string"
 Object (native and does not implement [[Call]])	"object"
 Object (native or host and does implement [[Call]])	"function"
 Object (host and does not implement [[Call]])	Implementation-defined except may not be "undefined", "boolean", "number", or "string".*/
+
+
+// Stack (primimtive) , Heap (Non- primitive)
+
+let run =101
+let runUpgrade = run
+runUpgrade = 150
+
+console.log(run)
+console.log(runUpgrade)
+
+let Customer = {
+  Uid: 1234,
+  email: "asdf@123"
+
+}
+let CustomerDetails = Customer
+CustomerDetails.email = "customer@123"
+
+console.log(Customer)
+console.log(CustomerDetails)
