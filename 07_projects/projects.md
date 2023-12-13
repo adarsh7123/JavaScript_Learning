@@ -224,3 +224,39 @@ window.addEventListener('keydown', (e) => {
 
 
 ```
+
+
+## project 6 solution
+
+```javascript
+
+const randomColor = function () {
+  const hex = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += hex[parseInt(Math.random() * 16)];
+    // console.log(color);
+  }
+  return color;
+};
+
+// randomColor();
+let intervalId;
+const startChangingColor = () => {
+  intervalId = setInterval(changeBgColor, 1000);
+
+  function changeBgColor() {
+    document.body.style.backgroundColor = randomColor();
+  }
+};
+const stopChangingColor = () => {
+  clearInterval(intervalId);
+  intervalId = null;
+};
+
+document.querySelector('#start').addEventListener('click', startChangingColor);
+
+document.querySelector('#stop').addEventListener('click', stopChangingColor);
+
+
+```
