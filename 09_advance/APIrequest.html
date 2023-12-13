@@ -1,0 +1,43 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Github User Details</title>
+</head>
+<body>
+
+    <div style="text-align: center;">
+        <h1>Github User Details</h1>
+        <img id="userImage" src="" alt="User Image" style="max-width: 100%; height: auto;">
+        <p id="followerCount" style="font-size: 18px; margin-top: 10px;"></p>
+    </div>
+
+    <script>
+        let followers;
+        let imgUrl;
+        const requestUrl = "https://api.github.com/users/hiteshchoudhary";
+        const xhr = new XMLHttpRequest();
+
+        xhr.open('GET', requestUrl);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                const data = JSON.parse(this.responseText);
+                followers = data.followers;
+                imgUrl = data.avatar_url;
+
+                // Update the image source
+                document.getElementById('userImage').src = imgUrl;
+
+                // Display follower count
+                document.getElementById('followerCount').textContent = `Followers: ${followers}`;
+            }
+        }
+        xhr.send();
+    </script>
+
+</body>
+</html>
